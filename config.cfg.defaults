@@ -1,4 +1,3 @@
-# CAUTION: Read-only file, do not alter
-# Contains default config values
+# Contains default config values (read only; do not alter)
 BACKUPS_PATH="${HOME}/backups"
 KEEP_X_LAST_BACKUPS=5
