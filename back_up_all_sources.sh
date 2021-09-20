@@ -22,7 +22,7 @@ NUM_SOURCES=$(wc -l sources.txt | awk '{ print $1 }')
 
 # if 0 sources, skip backups
 if [[ $NUM_SOURCES = 0 ]]; then
-    echo "\tNOTHING TO BACK UP: file 'sources.txt' is empty\n"
+    printf "\tNOTHING TO BACK UP: file 'sources.txt' is empty\n"
     exit 1
 fi
 
