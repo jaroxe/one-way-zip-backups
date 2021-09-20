@@ -2,6 +2,9 @@
 #
 # make zip backup of source dir (arg 1) and store it in backups dir (config var)
 
+# move to directory that contains the current script (env. variable)
+cd "${OWZB_WHERE}"
+
 # read config inputs (evaluates potential vars in text, e.g.: "${HOME}/backups")
 source config.shlib
 eval BACKUPS_PATH="$(config_get BACKUPS_PATH)"
@@ -66,5 +69,4 @@ done
 cd "${BACKUPS_PATH}/${SOURCE_NAME}"
 echo "source: '${SOURCE_PATH}'" > source.txt
 
-cd "${OWZB_WHERE}"  # TODO: move out of this file
 printf "\t\t## SUCCESS ##\n"
