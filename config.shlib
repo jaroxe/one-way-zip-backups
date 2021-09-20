@@ -10,15 +10,16 @@
 #   Writes value of config variable to stdout
 #######################################
 config_read_file() {
-    (grep -E "^${2}=" -m 1 "${1}" 2>/dev/null || echo "VAR=__UNDEFINED__") | head -n 1 | cut -d '=' -f 2-;
+    LINE=$(grep -E "^${2}=" -m 1 "${1}" 2>/dev/null || echo "VAR=__UNDEFINED__")
+    echo "${LINE}" | head -n 1 | cut -d '=' -f 2-  # display value only
 }
 
 #######################################
 # Get specified config value
 # Description:
 #   1. Looks for the value of a specified variable inside file config.cfg
-#   2. If the variable isn't found, it looks for the variable in config.cfg.defaults
-#   3. If the variable isn't found, value = '__UNDEFINED__'
+#   2. If the variable isn't found, it looks for it in config.cfg.defaults
+#   3. If the variable still isn't found, value = '__UNDEFINED__'
 # Arguments:
 #   Variable name
 # Outputs:
