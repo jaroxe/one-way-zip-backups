@@ -9,7 +9,7 @@ eval BACKUPS_PATH="$(config_get BACKUPS_PATH)"
 eval KEEP_X_LAST_BACKUPS="$(config_get KEEP_X_LAST_BACKUPS)"
 
 # validate BACKUPS_PATH
-mkdir "${BACKUPS_PATH}"  # tries to create directory in case it doesn't exist
+mkdir -p "${BACKUPS_PATH}"  # tries to create directory in case it doesn't exist
 if ! [[ -d "${BACKUPS_PATH}" ]]; then
     echo "ERROR: invalid backups directory '${BACKUPS_PATH}'"
     exit 1
