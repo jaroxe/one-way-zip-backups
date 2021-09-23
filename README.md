@@ -19,7 +19,7 @@ QSB handles all of this automatically on the press of a button.
 
 QSB is most useful with <u>fast changing directories which aren't too heavy</u> (e.g.: many text files, documents, spreadsheets, some images...). These folders would typically hold important information where you wouldn't want to lose any of your progress.
 
-QSB works on <u>Mac</u> and <u>Linux</u>. It is written as a series of <u>bash</u> scripts.
+QSB works on <u>Mac</u> and <ins>Linux</ins>. It is written as a series of <u>bash</u> scripts.
 
 # How it works #
 
