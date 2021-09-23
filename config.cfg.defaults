@@ -1,0 +1,3 @@
+# Contains default config values (read only; do not alter)
+BACKUPS_PATH="${HOME}/backups"
+KEEP_X_LAST_BACKUPS=5
