@@ -8,7 +8,7 @@ In case of disaster, you'll want to have up-to-date backups of your important fo
 
 You'll also want backups in different locations not to be "in sync" with one another (even while holding identical information). This way you'll ensure that corruption in one location will not propagate to other locations.
 
-QSB handles all of this automatically on the press of a button.
+QSB handles all of this automatically by running a single command on the terminal (`qsb`).
 
 #### Overview ####
 
