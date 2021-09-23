@@ -17,9 +17,9 @@ QSB handles all of this automatically on the press of a button.
 * **Timeline**: Easily revert to an earlier state of your important folder.
 * **Clarity**: Get records indicating i. where your backups are stored, ii. how up to date they are in each location, and iii. the original source directory for each backup.
 
-QSB is most useful with <u>fast changing directories which aren't too heavy</u> (e.g.: many text files, documents, spreadsheets, some images...). These folders would typically hold important information where you wouldn't want to lose any of your progress.
+QSB is most useful with <ins>fast changing directories which aren't too heavy</ins> (e.g.: many text files, documents, spreadsheets, some images...). These folders would typically hold important information where you wouldn't want to lose any of your progress.
 
-QSB works on <u>Mac</u> and <ins>Linux</ins>. It is written as a series of <u>bash</u> scripts.
+QSB works on <ins>Mac</ins> and <ins>Linux</ins>. It is written as a series of <ins>bash</ins> scripts.
 
 # How it works #
 
@@ -171,7 +171,7 @@ export QSB_WHERE="${HOME}/Downloads/quick-safe-backups-main"
 alias qsb='sh "${QSB_WHERE}/master.sh"'
 ```
 
-<u>The **first line** tells *bash* where in your local machine it should run QSB from</u>
+<ins>The **first line** tells *bash* where in your local machine it should run QSB from</ins>
 
 You can try the following example:
 
@@ -182,7 +182,7 @@ After you've done this you will need to let *bash* know about these changes; mod
 export QSB_WHERE="${HOME}/Documents/quick-safe-backups"
 ```
 
-<u>The **second line** tells bash which command you'd like to use to run QSB from the terminal</u>
+<ins>The **second line** tells bash which command you'd like to use to run QSB from the terminal</ins>
 
 By default, this command is `qsb`. If you wanted, you could change this command to something different, such as `run_qsb` (more explicit), `bak` (short for backups)... it's up to you.
 
