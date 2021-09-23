@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# replicate backups dir (config val) in all targets in 'additional_targets.txt'
+# replicate backups dir (config val) in all targets in 'targets.txt'
 
 # move to directory that contains the current script (env. variable)
 cd "${OWZB_WHERE}"
@@ -12,17 +12,17 @@ eval BACKUPS_PATH="$(config_get BACKUPS_PATH)"
 # indicate start of back up process in stdout
 printf "\nReplicating directory '${BACKUPS_PATH}' in:\n"
 
-# remove any blank lines in 'additional_targets.txt'
-grep "\S" additional_targets.txt > additional_targets_.txt
-cat additional_targets_.txt > additional_targets.txt
-rm additional_targets_.txt
+# remove any blank lines in 'targets.txt'
+grep "\S" targets.txt > targets_.txt
+cat targets_.txt > targets.txt
+rm targets_.txt
 
-# count number of targets in 'additional_targets.txt'
-NUM_TARGETS=$(wc -l additional_targets.txt | awk '{ print $1 }')
+# count number of targets in 'targets.txt'
+NUM_TARGETS=$(wc -l targets.txt | awk '{ print $1 }')
 
-# if 0 additional targets, skip backups replication
+# if 0 targets, skip backups replication
 if [[ $NUM_TARGETS = 0 ]]; then
-    printf "\tNOWHERE TO REPLICATE: file 'additional_targets.txt' is empty\n\n"
+    printf "\tNOWHERE TO REPLICATE: file 'targets.txt' is empty\n\n"
     exit 1
 fi
 
@@ -33,7 +33,7 @@ printf "\n\nSOURCE: '${BACKUPS_PATH}'" >> "${BACKUPS_PATH}/replications.log"
 
 # for each target, replicate backups directory
 for (( i = 1; i <= ${NUM_TARGETS}; i++ )); do
-    TRG=$(sed "${i}q;d" additional_targets.txt)
+    TRG=$(sed "${i}q;d" targets.txt)
     sh replicate_backups_in_one_target.sh "${TRG}"
 done
 
