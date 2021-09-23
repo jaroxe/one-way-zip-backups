@@ -23,23 +23,23 @@ QSB works on <u>Mac</u> and <u>Linux</u>. It is written as a series of <u>bash</
 
 # How it works #
 
-1. **You'll specify your sources in text file `sources.txt`**
+1. **You'll specify your sources in text file `sources.txt`**  
     Sources are the directories in your local machine that you would like to back up
-2. **You'll specify your targets in text file `targets.txt`**
+2. **You'll specify your targets in text file `targets.txt`**  
     Targets are the places where you would like to replicate the backups for your sources (e.g.: Dropbox, Google Drive, an external hard drive...)
-3. **QSB places backups for your sources inside a special directory in your local machine**
+3. **QSB places backups for your sources inside a special directory in your local machine**  
     (By default: a folder named `backups` in your home directory)
     * Each backup consists of a zip file, capturing the sate of the original source folder at a specific moment in time
-        * The name of each zip file will reflect the time and date of the backup
+        * The name of each zip file will reflect the time and date of the backup  
             E.g.: `my_folder-bak-2021-09-22T14-03.zip`
         * This will allow you to easily revert to a prior state of your source directory if you need to
-    * Each source gets its own subdirectory inside the backups directory
+    * Each source gets its own subdirectory inside the backups directory  
         This keeps things clear and makes it easy to find any particular backup
-    * By default, QSB makes sure to keep no more than the 5 most recent backups of each source (you can increase this number up to a max. of 25)
+    * By default, QSB makes sure to keep no more than the 5 most recent backups of each source (you can increase this number up to a max. of 25)  
         This way you won't have to worry about the backups folder getting too big
-4. **QSB replicates the entire backups directory into each of the specified targets**
+4. **QSB replicates the entire backups directory into each of the specified targets**  
     * This is done efficiently, as it only copies over changes between the backups directory and the target
-    * If a target cannot be found, QSB will skip replication of backups for this target and keep going 
+    * If a target cannot be found, QSB will skip replication of backups for this target and keep going  
         E.g.: one of your targets may be an external hard drive, which isn't always connected to your machine. QSB will replicate backups to this target whenever it is able to. If it isn't able, it will simply indicate so and keep replicating backups into other targets
     * QSB produces a `replications.log` (inside your backups directory) which will help you understand *when* and *where to* your backups have been replicated
 
@@ -90,10 +90,10 @@ The behavior of QSB is determined by several files:
 
 ## `.bash_profile` (or equivalent) ##
 
-**_"Wait, what on earth is .bash_profile?"_**
+**_"Wait, what on earth is .bash_profile?"_**  
 Think of it this way: *bash* is a language you can use to communicate with your computer (this type of language is known as *shell*). QSB is written in this language. `bash_profile` is a configuration file for this language. Our goal here is to tell *bash* a couple of things about QSB through `.bash_profile` (or some equivalent file; please keep on reading).
 
-**macOS**
+**macOS**  
 Starting on version 10.15 (Catalina), macOS changed its default *shell* from *bash* to *zsh*. You should find out which shell your system is running (by default) before proceeding with this part of the configuration.
 Open up the terminal and run the following command:
 
@@ -113,8 +113,8 @@ echo $0
         chsh -s /bin/bash
         ```
 
-**Linux**
-If [your OS is Ubuntu](https://askubuntu.com/questions/510709/i-cannot-find-bash-profile-in-ubuntu), chances are *bash* will be using the more generic `.profile` to configure its environment (this may be true of other Linux distros).
+**Linux**  
+If [your OS is Ubuntu](https://askubuntu.com/questions/510709/i-cannot-find-bash-profile-in-ubuntu), chances are *bash* will be using the more generic `.profile` to configure its environment (this may be true of other Linux distros).  
 I'd recommend doing the following to be on the safe side:
 
 1. Check whether `.bash_profile` is present in your home directory.
@@ -128,7 +128,7 @@ I'd recommend doing the following to be on the safe side:
 
 3. Otherwise, you should use `.profile` as your equivalent for `.bash_profile`: in the instructons that follow, replace any references to `.bash_profile` with `.profile` and you'll be fine
 
-**Let's jump into it**
+**Let's jump into it**  
 So now we know: `.bash_profile` is a hidden file located in your home directory. We need to edit this file by adding the following snippet:
 
 ```
@@ -144,7 +144,7 @@ nano ~/.bash_profile
 
 Scroll down to the bottom of the file (use arrow keys) and copy/paste the snippet. (It's fine if this file is completely empty or didn't previously exist; `nano` will create this file for you when you quit and save your changes).
 
-**Making sure it worked**
+**Making sure it worked**  
 
 1. Quit `nano` and save your changes (type `⌃X` to quit, `Y` to save changes, and `⏎` to confirm the file name)
 
@@ -164,7 +164,7 @@ Scroll down to the bottom of the file (use arrow keys) and copy/paste the snippe
     qsb
     ```
 
-**Understanding and modifying the snippet**
+**Understanding and modifying the snippet**  
 
 ```
 export QSB_WHERE="${HOME}/Downloads/quick-safe-backups-main"
@@ -175,7 +175,7 @@ alias qsb='sh "${QSB_WHERE}/master.sh"'
 
 You can try the following example:
 
-Move the QSB folder outside of `Downloads` and into your `Documents` folder. Also, rename the folder from `quick-safe-backups-main` to the cleaner `quick-safe-backups`.
+Move the QSB folder outside of `Downloads` and into your `Documents` folder. Also, rename the folder from `quick-safe-backups-main` to the cleaner `quick-safe-backups`.  
 After you've done this you will need to let *bash* know about these changes; modify the first line in the snippet (in `.bash_profile`):
 
 ```
@@ -222,15 +222,15 @@ Sources don't need to be accessible at all times. If a source isn't found during
 
 This file must be entirely filled out by you, the user. It should include the full path to each location where you would like to replicate your backups (one per line).
 
-Useful targets are locations that are accessible from your computer but hosted outside of it.
+Useful targets are locations that are accessible from your computer but hosted outside of it.  
 Common cases:
 
-* **Local folders which are synced with the cloud**
+* **Local folders which are synced with the cloud**  
     Example: '`${HOME}/Dropbox`' (a standard installation of Dropbox will provide you with this kind of folder)
-* **Cloud services which are accessible from your computer**
-    Example: '`/Volumes/GoogleDrive/My Drive`'
+* **Cloud services which are accessible from your computer**  
+    Example: '`/Volumes/GoogleDrive/My Drive`'  
     (tip: use Google Drive for Desktop and select option `Stream files` in Preferences)
-* **External hard drives**
+* **External hard drives**  
     Example: '`/Volumes/myExtHDD`'
 
 Example `targets.txt`:
