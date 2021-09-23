@@ -3,7 +3,7 @@
 # replicate backups directory (config value) in specified location (arg 1)
 
 # move to directory that contains the current script (env. variable)
-cd "${OWZB_WHERE}"
+cd "${QSB_WHERE}"
 
 # read config inputs (evaluates potential vars in text, e.g.: "${HOME}/backups")
 source config.shlib

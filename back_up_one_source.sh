@@ -3,7 +3,7 @@
 # make zip backup of source dir (arg 1) and store it in backups dir (config var)
 
 # move to directory that contains the current script (env. variable)
-cd "${OWZB_WHERE}"
+cd "${QSB_WHERE}"
 
 # read config inputs (evaluates potential vars in text, e.g.: "${HOME}/backups")
 source config.shlib

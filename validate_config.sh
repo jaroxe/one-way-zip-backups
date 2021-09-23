@@ -2,6 +2,9 @@
 #
 # make sure values in config files are valid
 
+# move to directory that contains the current script (env. variable)
+cd "${QSB_WHERE}"
+
 # read config values using functions in library 'config.shlib'
 # evaluates potential variables included in text (e.g.: "${HOME}/backups")
 source config.shlib

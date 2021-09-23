@@ -5,7 +5,7 @@
 #   targets: 'targets.txt'
 
 # move to directory that contains the current script (env. variable)
-cd "${OWZB_WHERE}"
+cd "${QSB_WHERE}"
 
 sh validate_config.sh && (
 
